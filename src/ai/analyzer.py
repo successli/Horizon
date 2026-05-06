@@ -132,6 +132,7 @@ class ContentAnalyzer:
         response = await self.client.complete(
             system=CONTENT_ANALYSIS_SYSTEM,
             user=user_prompt,
+            max_tokens=512,
         )
 
         # Parse JSON response with robust fallback

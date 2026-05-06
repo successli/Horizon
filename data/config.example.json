@@ -6,6 +6,7 @@
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.3,
     "max_tokens": 4096,
+    "request_timeout_sec": 45.0,
     "throttle_sec": 0
   },
   "email": {

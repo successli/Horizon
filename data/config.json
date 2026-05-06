@@ -7,6 +7,7 @@
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.3,
     "max_tokens": 8192,
+    "request_timeout_sec": 45.0,
     "throttle_sec": 0.0,
     "languages": [
       "zh"
