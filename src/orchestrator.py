@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 import httpx
 from rich.console import Console
 
-from .models import Config, ContentItem
+from .models import Config, ContentItem, SourceType
 from .storage.manager import StorageManager
 from .services.email import EmailManager
 from .services.webhook import WebhookNotifier
@@ -78,6 +78,8 @@ class HorizonOrchestrator:
                     f"🔗 Merged {len(all_items) - len(merged_items)} cross-source duplicates "
                     f"→ {len(merged_items)} unique items\n"
                 )
+
+            merged_items = self._limit_items_for_analysis(merged_items)
 
             # 4. Analyze with AI
             analyzed_items = await self._analyze_content(merged_items)
@@ -369,6 +371,47 @@ class HorizonOrchestrator:
             merged.append(primary)
 
         return merged
+
+    def _limit_items_for_analysis(self, items: List[ContentItem]) -> List[ContentItem]:
+        """Keep AI analysis bounded while preserving source diversity."""
+        max_items = self.config.filtering.max_items_to_analyze
+        if max_items <= 0 or len(items) <= max_items:
+            return items
+
+        def item_signal(item: ContentItem) -> tuple:
+            meta = item.metadata
+            engagement = (
+                float(meta.get("score") or 0)
+                + float(meta.get("descendants") or 0) * 0.5
+                + float(meta.get("favorite_count") or 0)
+                + float(meta.get("retweet_count") or 0)
+                + float(meta.get("reply_count") or 0) * 0.5
+            )
+            return (engagement, item.published_at)
+
+        groups: Dict[SourceType, List[ContentItem]] = defaultdict(list)
+        for item in items:
+            groups[item.source_type].append(item)
+        for group in groups.values():
+            group.sort(key=item_signal, reverse=True)
+
+        selected: List[ContentItem] = []
+        source_order = sorted(groups, key=lambda source: source.value)
+        while len(selected) < max_items and source_order:
+            next_order = []
+            for source in source_order:
+                group = groups[source]
+                if group and len(selected) < max_items:
+                    selected.append(group.pop(0))
+                if group:
+                    next_order.append(source)
+            source_order = next_order
+
+        self.console.print(
+            f"🧮 Limited AI analysis candidates from {len(items)} to {len(selected)} "
+            f"(max_items_to_analyze={max_items})\n"
+        )
+        return selected
 
     async def merge_topic_duplicates(self, items: List[ContentItem]) -> List[ContentItem]:
         """Merge items covering the same topic using AI semantic deduplication.

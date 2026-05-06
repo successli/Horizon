@@ -223,13 +223,15 @@ Content is scored 0-10:
 {
   "filtering": {
     "ai_score_threshold": 7.0,
-    "time_window_hours": 24
+    "time_window_hours": 24,
+    "max_items_to_analyze": 60
   }
 }
 ```
 
 - `ai_score_threshold`: Only include content scoring >= this value
 - `time_window_hours`: Fetch content from last N hours
+- `max_items_to_analyze`: Cap the number of fetched items sent to AI scoring while keeping source diversity
 
 ## Environment Variable Substitution
 
