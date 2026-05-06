@@ -19,7 +19,7 @@ Configure which AI model scores and summarizes your content.
     "provider": "anthropic",
     "model": "claude-sonnet-4.5-20250929",
     "api_key_env": "ANTHROPIC_API_KEY",
-    "request_timeout_sec": 45.0,
+    "request_timeout_sec": 20.0,
     "throttle_sec": 0
   }
 }
@@ -33,7 +33,7 @@ Configure which AI model scores and summarizes your content.
     "provider": "openai",
     "model": "gpt-4",
     "api_key_env": "OPENAI_API_KEY",
-    "request_timeout_sec": 45.0,
+    "request_timeout_sec": 20.0,
     "throttle_sec": 0
   }
 }
@@ -47,7 +47,7 @@ Configure which AI model scores and summarizes your content.
     "provider": "minimax",
     "model": "MiniMax-M2.7",
     "api_key_env": "MINIMAX_API_KEY",
-    "request_timeout_sec": 45.0,
+    "request_timeout_sec": 20.0,
     "throttle_sec": 0
   }
 }
@@ -63,7 +63,7 @@ Available models: `MiniMax-M2.7`, `MiniMax-M2.7-highspeed`, `MiniMax-M2.5`, `Min
     "provider": "ali",
     "model": "qwen-plus",
     "api_key_env": "DASHSCOPE_API_KEY",
-    "request_timeout_sec": 45.0,
+    "request_timeout_sec": 20.0,
     "throttle_sec": 0
   }
 }
@@ -71,7 +71,7 @@ Available models: `MiniMax-M2.7`, `MiniMax-M2.7-highspeed`, `MiniMax-M2.5`, `Min
 
 Use the [DashScope compatible-mode](https://help.aliyun.com/zh/dashscope/developer-reference/use-dashscope-by-calling-openai-api) endpoint. Set `DASHSCOPE_API_KEY` in your `.env`. Optional: set `base_url` to override the default `https://dashscope.aliyuncs.com/compatible-mode/v1`.
 
-- `request_timeout_sec`: Hard timeout for each AI request. Default is `45`.
+- `request_timeout_sec`: Hard timeout for each AI request. Default is `20`.
 
 ### AI throttling
 
@@ -230,7 +230,8 @@ Content is scored 0-10:
   "filtering": {
     "ai_score_threshold": 7.0,
     "time_window_hours": 24,
-    "max_items_to_analyze": 20
+    "max_items_to_analyze": 5,
+    "enrich_important_items": false
   }
 }
 ```
@@ -238,6 +239,7 @@ Content is scored 0-10:
 - `ai_score_threshold`: Only include content scoring >= this value
 - `time_window_hours`: Fetch content from last N hours
 - `max_items_to_analyze`: Cap the number of fetched items sent to AI scoring while keeping source diversity
+- `enrich_important_items`: Run a second AI enrichment pass for selected items. Disable this for faster scheduled reports.
 
 ## Environment Variable Substitution
 

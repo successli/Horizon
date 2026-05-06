@@ -6,7 +6,7 @@
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.3,
     "max_tokens": 4096,
-    "request_timeout_sec": 45.0,
+    "request_timeout_sec": 20.0,
     "throttle_sec": 0
   },
   "email": {
@@ -88,7 +88,8 @@
   "filtering": {
     "ai_score_threshold": 6.0,
     "time_window_hours": 24,
-    "max_items_to_analyze": 20
+    "max_items_to_analyze": 5,
+    "enrich_important_items": false
   },
   "webhook": {
     "enabled": false,
