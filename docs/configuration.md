@@ -224,7 +224,7 @@ Content is scored 0-10:
   "filtering": {
     "ai_score_threshold": 7.0,
     "time_window_hours": 24,
-    "max_items_to_analyze": 60
+    "max_items_to_analyze": 20
   }
 }
 ```

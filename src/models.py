@@ -183,7 +183,7 @@ class FilteringConfig(BaseModel):
 
     ai_score_threshold: float = 7.0
     time_window_hours: int = 24
-    max_items_to_analyze: int = 60
+    max_items_to_analyze: int = 20
 
 
 class Config(BaseModel):

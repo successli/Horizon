@@ -235,7 +235,7 @@ Minimal manual configuration:
   },
   "filtering": {
     "ai_score_threshold": 6.0,
-    "max_items_to_analyze": 60
+    "max_items_to_analyze": 20
   }
 }
 ```
