@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Horizon Daily - 中文摘要</title>
-  <link href="https://ai-news.successli.cn/feed-zh.xml" rel="self"/>
-  <link href="https://ai-news.successli.cn/"/>
-  <updated>2026-05-06T17:03:19+00:00</updated>
-  <id>https://ai-news.successli.cn/</id>
-  
-  
-  <entry>
-    <title>Horizon Summary: 2026-05-06 (ZH)</title>
-    <link href="https://ai-news.successli.cn/2026/05/06/summary-zh.html"/>
-    <updated>2026-05-06T00:00:00+00:00</updated>
-    <id>https://ai-news.successli.cn/2026/05/06/summary-zh.html</id>
-    <content type="html"><![CDATA[ <blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ai-news.successli.cn/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ai-news.successli.cn/" rel="alternate" type="text/html" /><updated>2026-05-06T17:03:19+00:00</updated><id>https://ai-news.successli.cn/feed.xml</id><title type="html">Horizon Daily</title><subtitle>AI-curated daily digest of tech and research news</subtitle><entry xml:lang="zh"><title type="html">Horizon Summary: 2026-05-06 (ZH)</title><link href="https://ai-news.successli.cn/2026/05/06/summary-zh.html" rel="alternate" type="text/html" title="Horizon Summary: 2026-05-06 (ZH)" /><published>2026-05-06T00:00:00+00:00</published><updated>2026-05-06T00:00:00+00:00</updated><id>https://ai-news.successli.cn/2026/05/06/summary-zh</id><content type="html" xml:base="https://ai-news.successli.cn/2026/05/06/summary-zh.html"><![CDATA[<blockquote>
   <p>From 64 items, 2 important content pieces were selected</p>
 </blockquote>
 
@@ -45,8 +31,4 @@
 
 <p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#sglang</code>, <code class="language-plaintext highlighter-rouge">#release</code>, <code class="language-plaintext highlighter-rouge">#llm-serving</code>, <code class="language-plaintext highlighter-rouge">#performance-optimization</code>, <code class="language-plaintext highlighter-rouge">#speculative-decoding</code></p>
 
-<hr />
- ]]></content>
-  </entry>
-  
-</feed>
+<hr />]]></content><author><name></name></author><summary type="html"><![CDATA[From 64 items, 2 important content pieces were selected]]></summary></entry></feed>

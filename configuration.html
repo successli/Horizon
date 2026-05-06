@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Configuration Guide | Horizon Daily</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Configuration Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="AI-curated daily digest of tech and research news" />
+<meta property="og:description" content="AI-curated daily digest of tech and research news" />
+<link rel="canonical" href="https://ai-news.successli.cn/configuration.html" />
+<meta property="og:url" content="https://ai-news.successli.cn/configuration.html" />
+<meta property="og:site_name" content="Horizon Daily" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Configuration Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"AI-curated daily digest of tech and research news","headline":"Configuration Guide","url":"https://ai-news.successli.cn/configuration.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=67bb31b63f27c187d3b69cc72f4f699d7329c71c">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
+<link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Horizon Daily RSS (All)" href="/feed.xml">
+<link rel="alternate" type="application/atom+xml" title="Horizon Daily RSS (ZH)" href="/feed-zh.xml">
+<link rel="alternate" type="application/atom+xml" title="Horizon Daily RSS (EN)" href="/feed-en.xml">
+<link rel="stylesheet" href="/assets/css/horizon.css">
+<style>
+.rss-icon{opacity:.6;color:inherit;margin-left:12px;vertical-align:middle;text-decoration:none;transition:all .2s}
+.rss-icon:hover{opacity:1;color:#f26522}
+.rss-icon svg{width:0.9em;height:0.9em;display:inline-block}
+@media(prefers-color-scheme:dark){body{background:#1a1726!important;color:#e8e4f0!important}}
+</style>
+<script src="/assets/js/horizon.js" defer></script>
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Configuration Guide</h1>
+      <h2 class="project-tagline">AI-curated daily digest of tech and research news</h2>
+      
+        <a href="https://github.com/successli/Horizon" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="configuration-guide">Configuration Guide</h1>
+
+<p>Horizon is configured through two files: a <code class="language-plaintext highlighter-rouge">.env</code> file for API keys and a <code class="language-plaintext highlighter-rouge">data/config.json</code> file for sources, AI provider, and filtering options.</p>
+
+<h2 id="ai-providers">AI Providers</h2>
+
+<p>Configure which AI model scores and summarizes your content.</p>
+
+<p><strong>Anthropic Claude</strong>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ai"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthropic"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"claude-sonnet-4.5-20250929"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANTHROPIC_API_KEY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>OpenAI</strong>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ai"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openai"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpt-4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPENAI_API_KEY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>MiniMax</strong>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ai"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minimax"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MiniMax-M2.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINIMAX_API_KEY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Available models: <code class="language-plaintext highlighter-rouge">MiniMax-M2.7</code>, <code class="language-plaintext highlighter-rouge">MiniMax-M2.7-highspeed</code>, <code class="language-plaintext highlighter-rouge">MiniMax-M2.5</code>, <code class="language-plaintext highlighter-rouge">MiniMax-M2.5-highspeed</code></p>
+
+<p><strong>Aliyun DashScope</strong> (OpenAI-compatible):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ai"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ali"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwen-plus"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASHSCOPE_API_KEY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Use the <a href="https://help.aliyun.com/zh/dashscope/developer-reference/use-dashscope-by-calling-openai-api">DashScope compatible-mode</a> endpoint. Set <code class="language-plaintext highlighter-rouge">DASHSCOPE_API_KEY</code> in your <code class="language-plaintext highlighter-rouge">.env</code>. Optional: set <code class="language-plaintext highlighter-rouge">base_url</code> to override the default <code class="language-plaintext highlighter-rouge">https://dashscope.aliyuncs.com/compatible-mode/v1</code>.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">request_timeout_sec</code>: Hard timeout for each AI request. Default is <code class="language-plaintext highlighter-rouge">20</code>.</li>
+</ul>
+
+<h3 id="ai-throttling">AI throttling</h3>
+
+<p>If your model has a strict per-minute request cap, you can slow the scorer down in <code class="language-plaintext highlighter-rouge">data/config.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ai"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">throttle_sec</code>: Pause between scored items in seconds. Default is <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">4.5</code> is a reasonable starting point for free-tier models capped around 15 requests per minute.</li>
+  <li>Set it back to <code class="language-plaintext highlighter-rouge">0</code> if you have enough throughput headroom and want maximum speed.</li>
+</ul>
+
+<p><strong>Custom Base URL</strong> (for proxies):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ai"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthropic"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-proxy.com/v1"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="information-sources">Information Sources</h2>
+
+<p>All sources are configured under the top-level <code class="language-plaintext highlighter-rouge">sources</code> key in <code class="language-plaintext highlighter-rouge">config.json</code>.</p>
+
+<h3 id="github">GitHub</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"github"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_events"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gvanrossum"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repo_releases"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"repo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpython"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="hacker-news">Hacker News</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"hackernews"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fetch_top_stories"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"min_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="rss-feeds">RSS Feeds</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rss"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/feed.xml"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ai-ml"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="reddit">Reddit</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fetch_comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subreddits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"subreddit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MachineLearning"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hot"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"fetch_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"min_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spez"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"fetch_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="twitter">Twitter</h3>
+
+<p>Requires an <a href="https://apify.com">Apify</a> account. Set <code class="language-plaintext highlighter-rouge">APIFY_TOKEN</code> in your <code class="language-plaintext highlighter-rouge">.env</code> file. The free tier includes $5/month of credit, enough for roughly 20,000 tweets.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"karpathy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ylecun"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"fetch_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fetch_reply_text"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_replies_per_tweet"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_tweets_to_expand"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reply_min_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">users</code> — Twitter screen names to monitor, without the <code class="language-plaintext highlighter-rouge">@</code> prefix</li>
+  <li><code class="language-plaintext highlighter-rouge">fetch_limit</code> — maximum tweets to fetch per run (across all users combined; minimum 100 due to actor constraint)</li>
+  <li><code class="language-plaintext highlighter-rouge">fetch_reply_text</code> — when <code class="language-plaintext highlighter-rouge">true</code>, fetch actual reply bodies for important tweets and append them under <code class="language-plaintext highlighter-rouge">--- Top Comments ---</code> so the AI can factor in community discussion. Disabled by default.</li>
+  <li><code class="language-plaintext highlighter-rouge">max_replies_per_tweet</code> — maximum reply lines to append per tweet (default: 3)</li>
+  <li><code class="language-plaintext highlighter-rouge">max_tweets_to_expand</code> — cap on how many tweets get reply expansion per run, to control Apify credit usage (default: 10)</li>
+  <li><code class="language-plaintext highlighter-rouge">reply_min_likes</code> — only include replies with at least this many likes (default: 0)</li>
+</ul>
+
+<p>The scraper uses the <code class="language-plaintext highlighter-rouge">altimis/scweet</code> actor by default. You can override it with <code class="language-plaintext highlighter-rouge">actor_id</code> if needed.</p>
+
+<h2 id="filtering">Filtering</h2>
+
+<p>Content is scored 0-10:</p>
+
+<ul>
+  <li><strong>9-10</strong>: Groundbreaking - Major breakthroughs, paradigm shifts</li>
+  <li><strong>7-8</strong>: High Value - Important developments, deep technical content</li>
+  <li><strong>5-6</strong>: Interesting - Worth knowing but not urgent</li>
+  <li><strong>3-4</strong>: Low Priority - Generic or routine content</li>
+  <li><strong>0-2</strong>: Noise - Spam, off-topic, or trivial</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filtering"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ai_score_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time_window_hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_items_to_analyze"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enrich_important_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ai_score_threshold</code>: Only include content scoring &gt;= this value</li>
+  <li><code class="language-plaintext highlighter-rouge">time_window_hours</code>: Fetch content from last N hours</li>
+  <li><code class="language-plaintext highlighter-rouge">max_items_to_analyze</code>: Cap the number of fetched items sent to AI scoring while keeping source diversity</li>
+  <li><code class="language-plaintext highlighter-rouge">enrich_important_items</code>: Run a second AI enrichment pass for selected items. Disable this for faster scheduled reports.</li>
+</ul>
+
+<h2 id="environment-variable-substitution">Environment Variable Substitution</h2>
+
+<p>RSS feed URLs support <code class="language-plaintext highlighter-rouge">${VAR_NAME}</code> syntax for secrets. The variable is expanded at runtime from environment variables (or <code class="language-plaintext highlighter-rouge">.env</code> file):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LWN.net"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lwn.net/headlines/full_text?key=${LWN_KEY}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This way <code class="language-plaintext highlighter-rouge">config.json</code> can be committed to a public repo without leaking tokens.</p>
+
+<h2 id="email-subscription">Email Subscription</h2>
+
+<p>Email delivery is optional and disabled unless <code class="language-plaintext highlighter-rouge">email.enabled</code> is <code class="language-plaintext highlighter-rouge">true</code>. Horizon uses SMTP to send daily summaries and IMAP to check subscribe/unsubscribe requests.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"smtp_server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smtp.qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"smtp_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imap_server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imap.qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imap_port"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx@qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"password_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL_PASSWORD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horizon Daily"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subscribe_keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIBE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unsubscribe_keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNSUBSCRIBE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">enabled</code>: Turns email subscription handling and daily email delivery on or off.</li>
+  <li><code class="language-plaintext highlighter-rouge">smtp_server</code> / <code class="language-plaintext highlighter-rouge">smtp_port</code>: SMTP server used to send emails.</li>
+  <li><code class="language-plaintext highlighter-rouge">imap_server</code> / <code class="language-plaintext highlighter-rouge">imap_port</code>: IMAP server used to scan incoming subscription requests.</li>
+  <li><code class="language-plaintext highlighter-rouge">email_address</code>: Sender account and mailbox checked for subscription requests.</li>
+  <li><code class="language-plaintext highlighter-rouge">password_env</code>: Environment variable containing the email password or app password. Defaults to <code class="language-plaintext highlighter-rouge">EMAIL_PASSWORD</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">sender_name</code>: Display name shown in sent emails.</li>
+  <li><code class="language-plaintext highlighter-rouge">subscribe_keyword</code> / <code class="language-plaintext highlighter-rouge">unsubscribe_keyword</code>: Keywords Horizon looks for in incoming email subjects.</li>
+</ul>
+
+<h2 id="webhook-notification">Webhook Notification</h2>
+
+<p>Webhook notification is optional and disabled unless <code class="language-plaintext highlighter-rouge">webhook.enabled</code> is <code class="language-plaintext highlighter-rouge">true</code>. Horizon can call Feishu/Lark, DingTalk, Slack, Discord, or any custom webhook endpoint when the pipeline succeeds or fails.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"webhook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HORIZON_WEBHOOK_URL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delivery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"summary"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"overview_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generic"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fallback_layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#{message_title}</span><span class="se">\n</span><span class="s2">#{summary}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">enabled</code>: Turns webhook delivery on or off. The default is <code class="language-plaintext highlighter-rouge">false</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">url_env</code>: Environment variable that contains the webhook URL. For example, set <code class="language-plaintext highlighter-rouge">HORIZON_WEBHOOK_URL=https://...</code> in <code class="language-plaintext highlighter-rouge">.env</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">delivery</code>: Controls how messages are sent. Use <code class="language-plaintext highlighter-rouge">summary</code> for one full message, or <code class="language-plaintext highlighter-rouge">summary_and_items</code> for one overview message followed by one message per selected item.</li>
+  <li><code class="language-plaintext highlighter-rouge">overview_position</code>: Controls where the overview is sent in <code class="language-plaintext highlighter-rouge">summary_and_items</code> mode. Use <code class="language-plaintext highlighter-rouge">first</code> for the traditional order, or <code class="language-plaintext highlighter-rouge">last</code> to send item details in reverse and keep the overview as the newest chat message.</li>
+  <li><code class="language-plaintext highlighter-rouge">platform</code>: Optional webhook platform hint. Use <code class="language-plaintext highlighter-rouge">generic</code> by default, or <code class="language-plaintext highlighter-rouge">feishu</code> / <code class="language-plaintext highlighter-rouge">lark</code> to enable platform-specific card rendering.</li>
+  <li><code class="language-plaintext highlighter-rouge">layout</code>: Controls the message layout. Use <code class="language-plaintext highlighter-rouge">markdown</code> for templated Markdown delivery, or <code class="language-plaintext highlighter-rouge">collapsible</code> with <code class="language-plaintext highlighter-rouge">platform: "feishu"</code> / <code class="language-plaintext highlighter-rouge">"lark"</code> for a single Feishu Card JSON 2.0 message with each item in a collapsed panel.</li>
+  <li><code class="language-plaintext highlighter-rouge">fallback_layout</code>: Reserved fallback layout for unsupported platform/layout combinations. The current safe fallback is <code class="language-plaintext highlighter-rouge">markdown</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">languages</code>: Optional webhook-only language filter. Use <code class="language-plaintext highlighter-rouge">["zh"]</code> or <code class="language-plaintext highlighter-rouge">["en"]</code> to send only selected languages; use <code class="language-plaintext highlighter-rouge">null</code> or omit it to send all configured <code class="language-plaintext highlighter-rouge">ai.languages</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">request_body</code>: Optional request body. If empty, Horizon sends a <code class="language-plaintext highlighter-rouge">GET</code> request. If provided, Horizon sends a <code class="language-plaintext highlighter-rouge">POST</code> request.</li>
+  <li><code class="language-plaintext highlighter-rouge">headers</code>: Optional custom headers, one <code class="language-plaintext highlighter-rouge">Key: Value</code> pair per line.</li>
+</ul>
+
+<p>When <code class="language-plaintext highlighter-rouge">request_body</code> is a JSON object or array, Horizon renders placeholders and serializes it as JSON. When it is a string, Horizon renders it directly and detects JSON if the rendered string is valid JSON.</p>
+
+<h3 id="webhook-templates">Webhook Templates</h3>
+
+<p>Available variables:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{date}</code></td>
+      <td>Report date, for example <code class="language-plaintext highlighter-rouge">2026-04-24</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{language}</code></td>
+      <td>Language code, such as <code class="language-plaintext highlighter-rouge">en</code> or <code class="language-plaintext highlighter-rouge">zh</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{important_items}</code></td>
+      <td>Number of items that passed the score threshold</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{all_items}</code></td>
+      <td>Total number of fetched items</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{result}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">success</code> or <code class="language-plaintext highlighter-rouge">failed</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{timestamp}</code></td>
+      <td>Unix timestamp</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{message_title}</code></td>
+      <td>Message title, such as the daily title, overview title, or item title</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{message_kind}</code></td>
+      <td>Message kind: <code class="language-plaintext highlighter-rouge">summary</code>, <code class="language-plaintext highlighter-rouge">overview</code>, <code class="language-plaintext highlighter-rouge">item</code>, <code class="language-plaintext highlighter-rouge">failure</code>, or <code class="language-plaintext highlighter-rouge">manual</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{summary}</code></td>
+      <td>Message Markdown. In <code class="language-plaintext highlighter-rouge">summary_and_items</code> mode this is the overview or one item body, depending on the message</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When <code class="language-plaintext highlighter-rouge">delivery</code> is <code class="language-plaintext highlighter-rouge">summary_and_items</code>, item messages also include:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{item_index}</code></td>
+      <td>1-based item number</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{item_count}</code></td>
+      <td>Total number of item messages</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{item_title}</code></td>
+      <td>Current item title</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{item_url}</code></td>
+      <td>Current item URL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{item_score}</code></td>
+      <td>Current item AI score</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For webhook delivery, Horizon flattens HTML disclosure blocks such as <code class="language-plaintext highlighter-rouge">&lt;details&gt;&lt;summary&gt;...&lt;/summary&gt;</code> in <code class="language-plaintext highlighter-rouge">#{summary}</code> into plain Markdown link lists. This makes the generated summary easier to render in chat products. Saved Markdown files, GitHub Pages, and email content are unchanged.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">#{key?limit=N&amp;split=DELIM}</code> to truncate long values by splitting on <code class="language-plaintext highlighter-rouge">DELIM</code> and keeping segments until the total character count reaches <code class="language-plaintext highlighter-rouge">N</code>.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#{summary?limit=3000&amp;split=---}
+</code></pre></div></div>
+
+<h3 id="dingtalk">DingTalk</h3>
+
+<p>In DingTalk, create a custom group robot and use a custom keyword such as <code class="language-plaintext highlighter-rouge">Horizon</code>. The keyword must appear in the body content.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"markdown"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horizon #{date} Daily"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horizon result: #{result}</span><span class="se">\n\n</span><span class="s2">Horizon important items: #{important_items}/#{all_items}</span><span class="se">\n\n</span><span class="s2">#{summary}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="feishu--lark">Feishu / Lark</h3>
+
+<p>In Feishu or Lark, create a custom group robot and use a custom keyword such as <code class="language-plaintext highlighter-rouge">Horizon</code>. The keyword must appear in the body content.</p>
+
+<p>Use Card JSON 2.0 for Markdown rendering. The card must include <code class="language-plaintext highlighter-rouge">"schema": "2.0"</code> and put rich-text Markdown components under <code class="language-plaintext highlighter-rouge">card.body.elements</code>.</p>
+
+<p>To keep the group chat compact while still allowing readers to browse the full briefing inside Feishu, use the collapsible layout:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"webhook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HORIZON_WEBHOOK_URL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feishu"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collapsible"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fallback_layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zh"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>With this layout, Horizon sends one interactive card containing the overview and one collapsed panel per selected item. Each panel can be expanded in Feishu to read the full item detail. The regular <code class="language-plaintext highlighter-rouge">request_body</code> template is ignored for this rendered card.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"msg_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interactive"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"wide_screen_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plain_text"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#{message_title}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"elements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horizon result: #{result}</span><span class="se">\n</span><span class="s2">Horizon important items: #{important_items}/#{all_items}"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hr"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markdown"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#{summary}"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="static-site">Static Site</h2>
+
+<p>Horizon writes generated summaries to <code class="language-plaintext highlighter-rouge">data/summaries/</code> and copies publishable Markdown into <code class="language-plaintext highlighter-rouge">docs/</code> for the GitHub Pages site. The repository includes a ready-to-use workflow at <code class="language-plaintext highlighter-rouge">.github/workflows/daily-summary.yml</code>.</p>
+
+<p>To use GitHub Pages, enable Pages for the repository and run the scheduled workflow or trigger it manually. The generated site is built from the <code class="language-plaintext highlighter-rouge">docs/</code> directory.</p>
+
+<h2 id="mcp-server">MCP Server</h2>
+
+<p>Horizon includes an MCP server for AI assistants and MCP-compatible clients.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run horizon-mcp
+</code></pre></div></div>
+
+<p>Available tools include <code class="language-plaintext highlighter-rouge">hz_validate_config</code>, <code class="language-plaintext highlighter-rouge">hz_fetch_items</code>, <code class="language-plaintext highlighter-rouge">hz_score_items</code>, <code class="language-plaintext highlighter-rouge">hz_filter_items</code>, <code class="language-plaintext highlighter-rouge">hz_enrich_items</code>, <code class="language-plaintext highlighter-rouge">hz_generate_summary</code>, and <code class="language-plaintext highlighter-rouge">hz_run_pipeline</code>.</p>
+
+<p>See <a href="../src/mcp/README.md"><code class="language-plaintext highlighter-rouge">src/mcp/README.md</code></a> for the full tool reference and <a href="../src/mcp/integration.md"><code class="language-plaintext highlighter-rouge">src/mcp/integration.md</code></a> for client setup.</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/successli/Horizon">Horizon</a> is maintained by <a href="https://github.com/successli">successli</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>
