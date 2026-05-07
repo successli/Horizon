@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=67bb31b63f27c187d3b69cc72f4f699d7329c71c">
+    <link rel="stylesheet" href="/assets/css/style.css?v=394688c28f38824eb5f0d65ec2cd99420617cfdb">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
 <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
@@ -71,6 +71,7 @@
     </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"claude-sonnet-4.5-20250929"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANTHROPIC_API_KEY"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_concurrent_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -84,6 +85,7 @@
     </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpt-4"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPENAI_API_KEY"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_concurrent_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -97,6 +99,7 @@
     </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MiniMax-M2.7"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINIMAX_API_KEY"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_concurrent_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -112,6 +115,7 @@
     </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwen-plus"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"api_key_env"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASHSCOPE_API_KEY"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_timeout_sec"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_concurrent_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="nl">"throttle_sec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -121,6 +125,7 @@
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">request_timeout_sec</code>: Hard timeout for each AI request. Default is <code class="language-plaintext highlighter-rouge">20</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">max_concurrent_requests</code>: Maximum number of AI requests in flight during scoring. Default is <code class="language-plaintext highlighter-rouge">4</code>.</li>
 </ul>
 
 <h3 id="ai-throttling">AI throttling</h3>
@@ -276,9 +281,9 @@
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"filtering"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ai_score_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ai_score_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"time_window_hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_items_to_analyze"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_items_to_analyze"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
     </span><span class="nl">"enrich_important_items"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">

@@ -1,34 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ai-news.successli.cn/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ai-news.successli.cn/" rel="alternate" type="text/html" /><updated>2026-05-06T17:03:19+00:00</updated><id>https://ai-news.successli.cn/feed.xml</id><title type="html">Horizon Daily</title><subtitle>AI-curated daily digest of tech and research news</subtitle><entry xml:lang="zh"><title type="html">Horizon Summary: 2026-05-06 (ZH)</title><link href="https://ai-news.successli.cn/2026/05/06/summary-zh.html" rel="alternate" type="text/html" title="Horizon Summary: 2026-05-06 (ZH)" /><published>2026-05-06T00:00:00+00:00</published><updated>2026-05-06T00:00:00+00:00</updated><id>https://ai-news.successli.cn/2026/05/06/summary-zh</id><content type="html" xml:base="https://ai-news.successli.cn/2026/05/06/summary-zh.html"><![CDATA[<blockquote>
-  <p>From 64 items, 2 important content pieces were selected</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ai-news.successli.cn/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ai-news.successli.cn/" rel="alternate" type="text/html" /><updated>2026-05-07T14:17:36+00:00</updated><id>https://ai-news.successli.cn/feed.xml</id><title type="html">Horizon Daily</title><subtitle>AI-curated daily digest of tech and research news</subtitle><entry xml:lang="zh"><title type="html">Horizon Summary: 2026-05-07 (ZH)</title><link href="https://ai-news.successli.cn/2026/05/07/summary-zh.html" rel="alternate" type="text/html" title="Horizon Summary: 2026-05-07 (ZH)" /><published>2026-05-07T00:00:00+00:00</published><updated>2026-05-07T00:00:00+00:00</updated><id>https://ai-news.successli.cn/2026/05/07/summary-zh</id><content type="html" xml:base="https://ai-news.successli.cn/2026/05/07/summary-zh.html"><![CDATA[<blockquote>
+  <p>从 60 条内容中筛选出 4 条重要资讯。</p>
 </blockquote>
 
 <hr />
 
 <ol>
-  <li><a href="#item-1">Vibe coding and agentic engineering are getting closer than I’d like</a> ⭐️ 8.0/10</li>
-  <li><a href="#item-2">sgl-project/sglang released v0.5.11</a> ⭐️ 8.0/10</li>
+  <li><a href="#item-1">SQLite 被美国国会图书馆推荐为存储格式</a> ⭐️ 8.0/10</li>
+  <li><a href="#item-2">从 Supabase 到 Clerk 再到 Better Auth 的身份认证迁移之旅</a> ⭐️ 8.0/10</li>
+  <li><a href="#item-3">重新思考 AI TCO：为何每 Token 成本才是唯一重要的指标</a> ⭐️ 6.0/10</li>
+  <li><a href="#item-4">AI 代理工具调用精通路线图</a> ⭐️ 6.0/10</li>
 </ol>
 
 <hr />
 
 <p><a id="item-1"></a></p>
-<h2 id="vibe-coding-and-agentic-engineering-are-getting-closer-than-id-like-️-8010"><a href="https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/#atom-everything">Vibe coding and agentic engineering are getting closer than I’d like</a> ⭐️ 8.0/10</h2>
+<h2 id="sqlite-被美国国会图书馆推荐为存储格式-️-8010"><a href="https://sqlite.org/locrsf.html">SQLite 被美国国会图书馆推荐为存储格式</a> ⭐️ 8.0/10</h2>
 
-<p>Simon Willison observes that ‘vibe coding’ and agentic engineering are starting to overlap in his work, raising concerns about the software development lifecycle’s ability to handle AI-accelerated code production.</p>
+<p>SQLite 被美国国会图书馆推荐为存储格式，突显其可靠性和长期稳定性。</p>
 
-<p>rss · Simon Willison · May 6, 14:24 · <a href="https://news.ycombinator.com/item?id=48037128">社区讨论</a></p>
+<p>hackernews · whatisabcdefgh · May 6, 21:58 · <a href="https://news.ycombinator.com/item?id=48042434">社区讨论</a></p>
 
-<p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#AI coding</code>, <code class="language-plaintext highlighter-rouge">#software engineering</code>, <code class="language-plaintext highlighter-rouge">#vibe coding</code>, <code class="language-plaintext highlighter-rouge">#agentic engineering</code>, <code class="language-plaintext highlighter-rouge">#LLMs</code></p>
+<p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#sqlite</code>, <code class="language-plaintext highlighter-rouge">#storage</code>, <code class="language-plaintext highlighter-rouge">#data-persistence</code>, <code class="language-plaintext highlighter-rouge">#loc</code>, <code class="language-plaintext highlighter-rouge">#endorsement</code></p>
 
 <hr />
 
 <p><a id="item-2"></a></p>
-<h2 id="sgl-projectsglang-released-v0511-️-8010"><a href="https://github.com/sgl-project/sglang/releases/tag/v0.5.11">sgl-project/sglang released v0.5.11</a> ⭐️ 8.0/10</h2>
+<h2 id="从-supabase-到-clerk-再到-better-auth-的身份认证迁移之旅-️-8010"><a href="https://blog.val.town/better-auth">从 Supabase 到 Clerk 再到 Better Auth 的身份认证迁移之旅</a> ⭐️ 8.0/10</h2>
 
-<p>sglang v0.5.11 upgrades to CUDA 13 and PyTorch 2.11, makes Speculative Decoding V2 default for lower CPU overhead, adds decode radix cache for prefill/decode disaggregation, and supports new models like Gemma 4 and Qwen3.6.</p>
+<p>一位开发者详述了从 Supabase Auth 到 Clerk 再到 Better Auth 的认证迁移过程，分享了实践中的权衡与经验教训。</p>
 
-<p>github · Kangyan-Zhou · May 5, 21:28</p>
+<p>hackernews · stevekrouse · May 6, 17:19 · <a href="https://news.ycombinator.com/item?id=48038827">社区讨论</a></p>
 
-<p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#sglang</code>, <code class="language-plaintext highlighter-rouge">#release</code>, <code class="language-plaintext highlighter-rouge">#llm-serving</code>, <code class="language-plaintext highlighter-rouge">#performance-optimization</code>, <code class="language-plaintext highlighter-rouge">#speculative-decoding</code></p>
+<p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#authentication</code>, <code class="language-plaintext highlighter-rouge">#supabase</code>, <code class="language-plaintext highlighter-rouge">#better-auth</code>, <code class="language-plaintext highlighter-rouge">#developer-experience</code>, <code class="language-plaintext highlighter-rouge">#blog</code></p>
 
-<hr />]]></content><author><name></name></author><summary type="html"><![CDATA[From 64 items, 2 important content pieces were selected]]></summary></entry></feed>
+<hr />
+
+<p><a id="item-3"></a></p>
+<h2 id="重新思考-ai-tco为何每-token-成本才是唯一重要的指标-️-6010"><a href="https://www.infoq.cn/article/Ot1auU07EMlexHsFJaaM?utm_source=rss&amp;utm_medium=article">重新思考 AI TCO：为何每 Token 成本才是唯一重要的指标</a> ⭐️ 6.0/10</h2>
+
+<p>文章认为，在评估 AI 整体拥有成本时，每 Token 成本是唯一重要的指标。</p>
+
+<p>rss · InfoQ 中文站 · May 7, 17:45</p>
+
+<p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#AI</code>, <code class="language-plaintext highlighter-rouge">#TCO</code>, <code class="language-plaintext highlighter-rouge">#Token Cost</code>, <code class="language-plaintext highlighter-rouge">#Economics</code>, <code class="language-plaintext highlighter-rouge">#LLM</code></p>
+
+<hr />
+
+<p><a id="item-4"></a></p>
+<h2 id="ai-代理工具调用精通路线图-️-6010"><a href="https://machinelearningmastery.com/the-roadmap-to-mastering-tool-calling-in-ai-agents/">AI 代理工具调用精通路线图</a> ⭐️ 6.0/10</h2>
+
+<p>一份掌握工具调用以增强 AI 代理能力的指南。</p>
+
+<p>rss · Machine Learning Mastery · May 7, 12:00</p>
+
+<p><strong>标签</strong>: <code class="language-plaintext highlighter-rouge">#AI Agents</code>, <code class="language-plaintext highlighter-rouge">#Tool Calling</code>, <code class="language-plaintext highlighter-rouge">#Tutorial</code>, <code class="language-plaintext highlighter-rouge">#Large Language Models</code>, <code class="language-plaintext highlighter-rouge">#Machine Learning</code></p>
+
+<hr />]]></content><author><name></name></author><summary type="html"><![CDATA[从 60 条内容中筛选出 4 条重要资讯。]]></summary></entry></feed>
