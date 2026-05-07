@@ -55,3 +55,28 @@ def test_analyze_batch_sleeps_between_items_when_throttle_configured(monkeypatch
     asyncio.run(analyzer.analyze_batch(items))
 
     assert sleep_calls == [1.5, 1.5]
+
+
+def test_analyze_item_stores_bilingual_summary_metadata():
+    class FakeClient:
+        async def complete(self, **kwargs):
+            return """{
+                "score": 8,
+                "reason_en": "Important release.",
+                "reason_zh": "这是一次重要发布。",
+                "summary_en": "The project released a faster model server.",
+                "summary_zh": "该项目发布了速度更快的模型服务。",
+                "title_zh": "更快的模型服务发布",
+                "tags": ["AI", "inference"]
+            }"""
+
+    analyzer = ContentAnalyzer(FakeClient())
+    item = _make_item("rss:test:1")
+
+    asyncio.run(analyzer._analyze_item(item))
+
+    assert item.ai_score == 8
+    assert item.ai_summary == "The project released a faster model server."
+    assert item.metadata["title_zh"] == "更快的模型服务发布"
+    assert item.metadata["detailed_summary_zh"] == "该项目发布了速度更快的模型服务。"
+    assert item.metadata["ai_reason_zh"] == "这是一次重要发布。"

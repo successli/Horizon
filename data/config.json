@@ -8,6 +8,7 @@
     "temperature": 0.3,
     "max_tokens": 8192,
     "request_timeout_sec": 20.0,
+    "max_concurrent_requests": 4,
     "throttle_sec": 0.0,
     "languages": [
       "zh"
@@ -332,9 +333,9 @@
     "twitter": null
   },
   "filtering": {
-    "ai_score_threshold": 7.0,
+    "ai_score_threshold": 6.0,
     "time_window_hours": 24,
-    "max_items_to_analyze": 5,
+    "max_items_to_analyze": 30,
     "enrich_important_items": false
   },
   "email": null,

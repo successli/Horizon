@@ -35,9 +35,16 @@ class ContentAnalyzer:
         throttle_sec = getattr(config, "throttle_sec", DEFAULT_THROTTLE_SEC)
         return max(throttle_sec, 0.0)
 
+    def _get_max_concurrency(self) -> int:
+        """Return the configured analysis concurrency, clamped to at least one."""
+        config = getattr(self.client, "config", None)
+        max_concurrency = getattr(config, "max_concurrent_requests", 1)
+        return max(int(max_concurrency or 1), 1)
+
     async def analyze_batch(self, items: List[ContentItem]) -> List[ContentItem]:
         throttle_sec = self._get_throttle_sec()
-        analyzed_items = []
+        max_concurrency = self._get_max_concurrency()
+        analyzed_items: List[Optional[ContentItem]] = [None] * len(items)
 
         with Progress(
             SpinnerColumn(),
@@ -48,21 +55,34 @@ class ContentAnalyzer:
         ) as progress:
             task = progress.add_task("Analyzing", total=len(items))
 
-            for index, item in enumerate(items):
+            async def analyze_one(index: int, item: ContentItem) -> None:
                 try:
                     await self._analyze_item(item)
-                    analyzed_items.append(item)
                 except Exception as e:
                     print(f"Error analyzing item {item.id}: {e}")
                     item.ai_score = 0.0
                     item.ai_reason = "Analysis failed"
                     item.ai_summary = item.title
-                    analyzed_items.append(item)
+                analyzed_items[index] = item
                 progress.advance(task)
-                if throttle_sec > 0 and index < len(items) - 1:
-                    await asyncio.sleep(throttle_sec)
 
-        return analyzed_items
+            if throttle_sec > 0 or max_concurrency <= 1:
+                for index, item in enumerate(items):
+                    await analyze_one(index, item)
+                    if throttle_sec > 0 and index < len(items) - 1:
+                        await asyncio.sleep(throttle_sec)
+            else:
+                semaphore = asyncio.Semaphore(max_concurrency)
+
+                async def limited_analyze(index: int, item: ContentItem) -> None:
+                    async with semaphore:
+                        await analyze_one(index, item)
+
+                await asyncio.gather(
+                    *(limited_analyze(index, item) for index, item in enumerate(items))
+                )
+
+        return [item for item in analyzed_items if item is not None]
 
     @retry(
         stop=stop_after_attempt(3),
@@ -147,6 +167,20 @@ class ContentAnalyzer:
 
         # Update item with analysis results
         item.ai_score = float(result.get("score", 0))
-        item.ai_reason = result.get("reason", "")
-        item.ai_summary = result.get("summary", item.title)
+        reason_en = result.get("reason_en") or result.get("reason", "")
+        summary_en = result.get("summary_en") or result.get("summary", item.title)
+        item.ai_reason = reason_en
+        item.ai_summary = summary_en
         item.ai_tags = result.get("tags", [])
+
+        title_zh = result.get("title_zh")
+        summary_zh = result.get("summary_zh")
+        reason_zh = result.get("reason_zh")
+        if title_zh:
+            item.metadata["title_zh"] = str(title_zh)
+        if summary_en:
+            item.metadata["detailed_summary_en"] = str(summary_en)
+        if summary_zh:
+            item.metadata["detailed_summary_zh"] = str(summary_zh)
+        if reason_zh:
+            item.metadata["ai_reason_zh"] = str(reason_zh)

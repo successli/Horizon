@@ -61,8 +61,11 @@ Consider:
 
 CONTENT_ANALYSIS_USER = """Analyze the following content and provide a JSON response with:
 - score (0-10): Importance score
-- reason: Brief explanation for the score (mention discussion quality if comments are provided)
-- summary: One-sentence summary of the content
+- reason_en: Brief English explanation for the score (mention discussion quality if comments are provided)
+- reason_zh: 简体中文评分理由（如果提供了评论，请提及讨论质量）
+- summary_en: One-sentence English summary of the content
+- summary_zh: 一句简体中文摘要。必须翻译或改写成中文，不能直接输出英文原文。
+- title_zh: 简体中文标题，保留必要的产品名、项目名和技术缩写
 - tags: Relevant topic tags (3-5 tags)
 
 Content:
@@ -76,8 +79,11 @@ URL: {url}
 Respond with valid JSON only:
 {{
   "score": <number>,
-  "reason": "<explanation>",
-  "summary": "<one-sentence-summary>",
+  "reason_en": "<English explanation>",
+  "reason_zh": "<中文评分理由>",
+  "summary_en": "<English one-sentence summary>",
+  "summary_zh": "<中文一句话摘要>",
+  "title_zh": "<中文标题>",
   "tags": ["<tag1>", "<tag2>", ...]
 }}"""
 

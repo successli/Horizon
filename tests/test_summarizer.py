@@ -1,5 +1,6 @@
 """Unit tests for daily summary rendering."""
 
+import asyncio
 from datetime import datetime, timezone
 
 from src.ai.summarizer import DailySummarizer
@@ -98,3 +99,24 @@ def test_generate_webhook_item_uses_localized_discussion_label():
     )
 
     assert "[社区讨论](https://www.reddit.com/r/python/comments/abc123/test/)" in result
+
+
+def test_generate_summary_uses_chinese_metadata_for_zh_output():
+    summarizer = DailySummarizer()
+    item = _make_item(1)
+    item.metadata["title_zh"] = "重要项目发布"
+    item.metadata["detailed_summary_zh"] = "该项目发布了重要更新。"
+
+    result = asyncio.run(
+        summarizer.generate_summary(
+            [item],
+            date="2026-04-25",
+            total_fetched=10,
+            language="zh",
+        )
+    )
+
+    assert "从 10 条内容中筛选出 1 条重要资讯" in result
+    assert "重要项目发布" in result
+    assert "该项目发布了重要更新。" in result
+    assert "Summary for item 1." not in result

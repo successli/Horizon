@@ -56,6 +56,7 @@ class AIConfig(BaseModel):
     temperature: float = 0.3
     max_tokens: int = 4096
     request_timeout_sec: float = 20.0
+    max_concurrent_requests: int = 4
     throttle_sec: float = 0.0
     languages: List[str] = Field(default_factory=lambda: ["en"])
 
@@ -184,7 +185,7 @@ class FilteringConfig(BaseModel):
 
     ai_score_threshold: float = 7.0
     time_window_hours: int = 24
-    max_items_to_analyze: int = 5
+    max_items_to_analyze: int = 30
     enrich_important_items: bool = True
 
 

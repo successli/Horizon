@@ -20,6 +20,7 @@ Configure which AI model scores and summarizes your content.
     "model": "claude-sonnet-4.5-20250929",
     "api_key_env": "ANTHROPIC_API_KEY",
     "request_timeout_sec": 20.0,
+    "max_concurrent_requests": 4,
     "throttle_sec": 0
   }
 }
@@ -34,6 +35,7 @@ Configure which AI model scores and summarizes your content.
     "model": "gpt-4",
     "api_key_env": "OPENAI_API_KEY",
     "request_timeout_sec": 20.0,
+    "max_concurrent_requests": 4,
     "throttle_sec": 0
   }
 }
@@ -48,6 +50,7 @@ Configure which AI model scores and summarizes your content.
     "model": "MiniMax-M2.7",
     "api_key_env": "MINIMAX_API_KEY",
     "request_timeout_sec": 20.0,
+    "max_concurrent_requests": 4,
     "throttle_sec": 0
   }
 }
@@ -64,6 +67,7 @@ Available models: `MiniMax-M2.7`, `MiniMax-M2.7-highspeed`, `MiniMax-M2.5`, `Min
     "model": "qwen-plus",
     "api_key_env": "DASHSCOPE_API_KEY",
     "request_timeout_sec": 20.0,
+    "max_concurrent_requests": 4,
     "throttle_sec": 0
   }
 }
@@ -72,6 +76,7 @@ Available models: `MiniMax-M2.7`, `MiniMax-M2.7-highspeed`, `MiniMax-M2.5`, `Min
 Use the [DashScope compatible-mode](https://help.aliyun.com/zh/dashscope/developer-reference/use-dashscope-by-calling-openai-api) endpoint. Set `DASHSCOPE_API_KEY` in your `.env`. Optional: set `base_url` to override the default `https://dashscope.aliyuncs.com/compatible-mode/v1`.
 
 - `request_timeout_sec`: Hard timeout for each AI request. Default is `20`.
+- `max_concurrent_requests`: Maximum number of AI requests in flight during scoring. Default is `4`.
 
 ### AI throttling
 
@@ -228,9 +233,9 @@ Content is scored 0-10:
 ```json
 {
   "filtering": {
-    "ai_score_threshold": 7.0,
+    "ai_score_threshold": 6.0,
     "time_window_hours": 24,
-    "max_items_to_analyze": 5,
+    "max_items_to_analyze": 30,
     "enrich_important_items": false
   }
 }

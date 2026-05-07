@@ -236,7 +236,7 @@ cp data/config.example.json data/config.json  # 自定义信息源
   },
   "filtering": {
     "ai_score_threshold": 6.0,
-    "max_items_to_analyze": 5,
+    "max_items_to_analyze": 30,
     "enrich_important_items": false
   }
 }

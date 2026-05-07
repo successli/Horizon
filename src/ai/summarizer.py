@@ -86,13 +86,20 @@ class DailySummarizer:
         labels = LABELS.get(language, LABELS["en"])
 
         if not items:
-            return self._generate_empty_summary(date, total_fetched, labels)
+            return self._generate_empty_summary(date, total_fetched, labels, language)
 
-        header = (
-            f"# {labels['header']} - {date}\n\n"
-            f"> From {total_fetched} items, {len(items)} important content pieces were selected\n\n"
-            "---\n\n"
-        )
+        if language == "zh":
+            header = (
+                f"# {labels['header']} - {date}\n\n"
+                f"> 从 {total_fetched} 条内容中筛选出 {len(items)} 条重要资讯。\n\n"
+                "---\n\n"
+            )
+        else:
+            header = (
+                f"# {labels['header']} - {date}\n\n"
+                f"> From {total_fetched} items, {len(items)} important content pieces were selected\n\n"
+                "---\n\n"
+            )
 
         # TOC
         toc_entries = []
@@ -119,7 +126,7 @@ class DailySummarizer:
         """Generate a compact overview for multi-message webhook delivery."""
         labels = LABELS.get(language, LABELS["en"])
         if not items:
-            return self._generate_empty_summary(date, total_fetched, labels)
+            return self._generate_empty_summary(date, total_fetched, labels, language)
 
         if language == "zh":
             header = (
@@ -238,10 +245,21 @@ class DailySummarizer:
 
         return "\n".join(lines) + "\n\n"
 
-    def _generate_empty_summary(self, date: str, total_fetched: int, labels: dict) -> str:
+    def _generate_empty_summary(
+        self,
+        date: str,
+        total_fetched: int,
+        labels: dict,
+        language: str = "en",
+    ) -> str:
         """Generate summary when no high-scoring items were found."""
+        if language == "zh":
+            analyzed_line = f"分析了 {total_fetched} 条内容，但没有达到重要性阈值。"
+        else:
+            analyzed_line = f"Analyzed {total_fetched} items, but none met the importance threshold."
+
         return (
             f"# {labels['header']} - {date}\n\n"
-            f"> Analyzed {total_fetched} items, but none met the importance threshold.\n\n"
+            f"> {analyzed_line}\n\n"
             + labels["empty_body"]
         )
